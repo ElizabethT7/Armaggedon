@@ -36,10 +36,10 @@ const config: Config = {
       'mobile': '375px',
       // => @media (min-width: 375px) { ... },
 
-      'desktop': '1025px',
+      'tablet': '1025px',
       // => @media (min-width: 1025px) { ... }
 
-      'desktop-bg': '1356px',
+      "desktop": "1356px",
       // => @media (min-width: 1400px) { ... }
     },
   },
