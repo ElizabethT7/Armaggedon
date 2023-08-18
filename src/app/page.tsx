@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="mobile:max-width-[375px] desktop:max-width-[1025px] desktop-bg:max-width-[1356px] mx-auto px-4">
 
-    </main>
+    </div>
   )
 }
