@@ -12,7 +12,7 @@ export default function Logo() {
       href='/'
       className='font-passion text-3xlc text-orange-medium uppercase'
     >
-      Armaggedon 2023
+      <h1>Armaggedon 2023</h1>
     </Link>
   )
 }

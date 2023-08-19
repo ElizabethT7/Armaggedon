@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        'smc': '375px',
+        'mwd': '1254px',
+        'swd': '1107px',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -18,15 +23,18 @@ const config: Config = {
         sans: ['Helvetica', 'Arial', 'sans-serif'],
       },
       fontSize: {
-        //'smc': ['14px', '17px'],
+        'smc': ['11px', '20px'],
         //'lmc': ['16px', '20px'],
         //'lgc': ['18px', '22px'],
         //'2lgc': ['21px', '24px'],
-        //'xlc': ['21px', '25px'],
+        '2xlc': ['28px', '36px'],
         '3xlc': ['32px', '36px'],
         //'4xlc': ['40px', '48px'],
       },
       colors: {
+        gray: {
+          'light': '#E3E5E5',
+        },
         orange: {
           'medium': '#F86600',
         },
@@ -36,7 +44,10 @@ const config: Config = {
       'mobile': '375px',
       // => @media (min-width: 375px) { ... },
 
-      'tablet': '1025px',
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... },
+
+      'lg': '1025px',
       // => @media (min-width: 1025px) { ... }
 
       "desktop": "1356px",
