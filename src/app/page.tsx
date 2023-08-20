@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Img from './assets/img/planeta_zemlia_kosmos_167499_2560x1600 1.png';
-import Container from './components/Container';
-import { ContextProvider } from '../context';
+import Img from '../assets/img/planeta_zemlia_kosmos_167499_2560x1600 1.png';
+import Container from '../components/Container';
+
 
 export default function Home() {
   return (
@@ -17,9 +17,7 @@ export default function Home() {
           priority
         />
       </div>
-      <ContextProvider>
-        <Container/>
-      </ContextProvider>
+      <Container/>
     </div>
   )
 }

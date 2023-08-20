@@ -1,17 +1,23 @@
+import Link from 'next/link';
+import { useContext } from 'react';
 import IAsteroid from '@/types/IAsteroid';
 import { formatDate, formatName, formatNumber, plural } from '../../utils';
-import { useContext } from 'react';
 import {AsteroidsContext } from '../../context';
 import Image from 'next/image';
-import Img from '../assets/img/big-item.png';
+import Img from '../../assets/img/big-item.png';
+
 
 interface ItemProps {
   item: IAsteroid
 }
-export default function Item({item}: ItemProps) {
-  const { isBasketShow, isDistanceInKm } = useContext(AsteroidsContext);
+      
+export default function AsteroidsItem({item}: ItemProps) {
+  const { isBasketShow, isDistanceInKm, setAsteroid } = useContext(AsteroidsContext);
 
-  console.log(item)
+  const handleClick = () => {
+    setAsteroid(item);
+  }
+
   const title = formatDate(item.close_approach_data[0].epoch_date_close_approach);
   const diameter =  Math.round(item.estimated_diameter.meters.estimated_diameter_max);
   const distanceLunar = formatNumber(+item.close_approach_data[0].miss_distance.lunar);
@@ -52,9 +58,15 @@ export default function Item({item}: ItemProps) {
           />
         </div>
         <div className='pl-2'>
-          <h4 className='text-base font-bold underline'>
-            {formatName(item.name)}
-          </h4>
+          <Link
+            href={`/asteroid/${item.id}`}
+            className='block'
+            onClick={handleClick}
+          >
+            <h4 className='text-base font-bold underline'>
+              {formatName(item.name)}
+            </h4>
+          </Link>
           <p className='text-xs'>
             Ø {diameter} м
           </p>
