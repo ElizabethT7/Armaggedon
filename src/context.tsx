@@ -6,6 +6,8 @@ import IAsteroid from './types/IAsteroid';
 interface AsteroidsState {
   items: IAsteroid[];
   loading: boolean;
+  order: IAsteroid[];
+  quantity: number;
   isBasketShow: boolean;
   isDistanceInKm: boolean;
   asteroid: IAsteroid | {};
@@ -13,27 +15,23 @@ interface AsteroidsState {
 const initialState: AsteroidsState = {
   items: [],
   loading: true,
-  //order: [],
+  order: [],
+  quantity: 0,
   isBasketShow: false,
   isDistanceInKm: true,
   asteroid: {},
 }
 
-type IAsteroidsContext = [AsteroidsState, React.Dispatch<React.SetStateAction<AsteroidsState>>];
-export const AsteroidsContext = createContext<IAsteroidsContext>([initialState, () => null]);
+//type IAsteroidsContext = [AsteroidsState, React.Dispatch<React.SetStateAction<AsteroidsState>>];
+export const AsteroidsContext = createContext<any>([initialState, () => null]);
 
 
 export const ContextProvider = ({ children }: any) => {
   const [value, dispatch] = useReducer(reducer, initialState);
 
-  /*value.addToBasket = (item) => {
-    dispatch({type: 'ADD_TO_BASKET', payload: item})
+  value.addToBasket = (data: IAsteroid) => {
+    dispatch({type: 'ADD_TO_BASKET', payload: data})
   }
-
-  value.removeFromBasket = (itemId) => {
-    dispatch({type: 'REMOVE_FROM_BASKET', payload: {id: itemId}})
-  }
-*/
   value.handleDistance = (data: boolean) => {
     dispatch({type: 'TOGGLE_DISTANCE', payload: data})
   }
@@ -42,6 +40,12 @@ export const ContextProvider = ({ children }: any) => {
   }
   value.setItems = (data: any) => {
     dispatch({type: 'SET_ASTEROIDS', payload: data})
+  }
+  value.setOrder = (data: IAsteroid[]) => {
+    dispatch({type: 'SET_ASTEROIDS', payload: data})
+  }
+  value.resetQuantity = () => {
+    dispatch({type: 'RESET_QUANTITY', payload: null})
   }
 
   return (

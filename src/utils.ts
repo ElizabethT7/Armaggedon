@@ -19,7 +19,7 @@ export const formatNumber = (number: number) => {
   return new Intl.NumberFormat("ru-RU").format(formatNumber);
 }
 
-export function plural(value: number, variants = ['лунная орбита', 'лунные орбиты', 'лунных орбит'], locale = 'ru-RU') {
+export function plural(value: number, variants: string[] = [], locale = 'ru-RU') {
   value = Math.abs(value) % 100; 
   const  value1 = value % 10;
   if (value > 10 && value < 20) { return variants[2]; }

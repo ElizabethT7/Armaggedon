@@ -24,12 +24,9 @@ const config: Config = {
       },
       fontSize: {
         'smc': ['11px', '20px'],
-        //'lmc': ['16px', '20px'],
         'lgc': ['18px', '24px'],
-        //'2lgc': ['21px', '24px'],
         '2xlc': ['28px', '36px'],
         '3xlc': ['32px', '36px'],
-        //'4xlc': ['40px', '48px'],
       },
       colors: {
         gray: {
@@ -44,16 +41,9 @@ const config: Config = {
     },
     screens: {
       'mobile': '375px',
-      // => @media (min-width: 375px) { ... },
-
       'sm': '640px',
-      // => @media (min-width: 640px) { ... },
-
       'lg': '1025px',
-      // => @media (min-width: 1025px) { ... }
-
       "desktop": "1356px",
-      // => @media (min-width: 1400px) { ... }
     },
   },
   plugins: [],

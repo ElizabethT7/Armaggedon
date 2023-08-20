@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import IAsteroid from '@/types/IAsteroid';
 import { formatDate, formatName, formatNumber, plural } from '../../utils';
 import {AsteroidsContext } from '../../context';
@@ -11,22 +11,16 @@ interface ItemProps {
   item: IAsteroid
 }
       
-export default function AsteroidsItem({item}: ItemProps) {
-  const {  isDistanceInKm, setAsteroid, addToBasket } = useContext(AsteroidsContext);
-  const [isBasketShow, setIsBasketShow] = useState(false);
-
-  const title = formatDate(item.close_approach_data[0].epoch_date_close_approach);
-  const diameter =  Math.round(item.estimated_diameter.meters.estimated_diameter_max);
-  const distanceLunar = formatNumber(+item.close_approach_data[0].miss_distance.lunar);
+export default function BasketItem({item}: ItemProps) {
+  const { isDistanceInKm, setAsteroid } = useContext(AsteroidsContext);
 
   const handleClick = () => {
     setAsteroid(item);
   }
 
-  const orderAsteroid = () => {
-    setIsBasketShow(true)
-    addToBasket(item);
-  }
+  const title = formatDate(item.close_approach_data[0].epoch_date_close_approach);
+  const diameter =  Math.round(item.estimated_diameter.meters.estimated_diameter_max);
+  const distanceLunar = formatNumber(+item.close_approach_data[0].miss_distance.lunar);
 
   return (
     <div className='mt-6'>
@@ -41,7 +35,7 @@ export default function AsteroidsItem({item}: ItemProps) {
               </div> :
               <div>
                 <span>{distanceLunar}</span>
-                <span> {plural(+distanceLunar, ['лунная орбита', 'лунные орбиты', 'лунных орбит'])}</span>
+                <span> {plural(+distanceLunar)}</span>
               </div>
             }
           </div>
@@ -77,19 +71,10 @@ export default function AsteroidsItem({item}: ItemProps) {
           </p>
         </div>
       </div>
-      <div className='flex items-center mt-2'>
-        <button
-          className='h-[24px] text-smc font-bold text-orange-medium uppercase py-[2px] px-[11px] tracking-[1px] bg-[#250F00] rounded-2xl'
-          onClick={orderAsteroid}
-        >
-          {isBasketShow ?
-            "В корзине" :
-            "Заказать"
-          }       
-        </button>
+      <div className='flex mt-2'>
         {item.is_potentially_hazardous_asteroid && 
-          <div className='text-sm p-[10px] text-yellow-400 center'>
-            <span>&#9888;</span>
+          <div className='text-sm p-[10px] text-yellow-400'>
+            &#9888;
              <span className='text-gray-light'> Опасен</span>
           </div>
         }

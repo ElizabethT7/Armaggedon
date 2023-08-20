@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Img from '../../assets/img/planeta_zemlia_kosmos_167499_2560x1600 1.png';
+import BasketList from '../../components/list/BasketList';
 
 export default function Basket() {
   
@@ -18,6 +19,7 @@ export default function Basket() {
       </div>
       <div className='lg:ml-32 sm:ml-14 ml-6 max-w-[279px] sm:max-w-[402px]'>
         <h2 className='text-2xlc font-bold'>Заказ отправлен!</h2>
+        <BasketList />
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import {AsteroidsContext } from '../../context';
 import Error from '../Error';
 import Spinner from '../Spinner';
 import ApproachItem from '../item/ApproachItem';
-import IApproachData from '@/types/IApproachData';
+import IApproachData from '../../types/IApproachData';
 
 export default function ApproachList() {
   const { asteroid, loading } = useContext(AsteroidsContext);
