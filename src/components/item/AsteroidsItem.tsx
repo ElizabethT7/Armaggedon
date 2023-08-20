@@ -26,7 +26,7 @@ export default function AsteroidsItem({item}: ItemProps) {
   return (
     <div className='mt-6'>
       <h3 className='text-2xl font-bold'>{title}</h3>
-      <div className='flex items-center mt-2'>
+      <div className='flex flex-wrap items-center mt-2'>
         <div className='pr-2'>
           <div className='text-base font-normal'>
             { isDistanceInKm ?

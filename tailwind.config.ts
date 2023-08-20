@@ -25,7 +25,7 @@ const config: Config = {
       fontSize: {
         'smc': ['11px', '20px'],
         //'lmc': ['16px', '20px'],
-        //'lgc': ['18px', '22px'],
+        'lgc': ['18px', '24px'],
         //'2lgc': ['21px', '24px'],
         '2xlc': ['28px', '36px'],
         '3xlc': ['32px', '36px'],
@@ -34,9 +34,11 @@ const config: Config = {
       colors: {
         gray: {
           'light': '#E3E5E5',
+          'dark': '#232526',
         },
         orange: {
           'medium': '#F86600',
+          'dark': '#250F00',
         },
       },
     },

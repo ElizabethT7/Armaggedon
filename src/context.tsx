@@ -33,14 +33,7 @@ export const ContextProvider = ({ children }: any) => {
   value.removeFromBasket = (itemId) => {
     dispatch({type: 'REMOVE_FROM_BASKET', payload: {id: itemId}})
   }
-
-  value.closeAlert = () => {
-    dispatch({type: 'CLOSE_ALERT'})
-  }*/
-
-  value.handleBasketShow = () => {
-    dispatch({type: 'TOGGLE_BASKET', payload: null})
-  }
+*/
   value.handleDistance = (data: boolean) => {
     dispatch({type: 'TOGGLE_DISTANCE', payload: data})
   }

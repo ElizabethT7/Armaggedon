@@ -1,10 +1,8 @@
 import Image from 'next/image';
-import Img from '../assets/img/planeta_zemlia_kosmos_167499_2560x1600 1.png';
-import Container from '../components/Container';
-import Cart from '../components/Cart';
+import Img from '../../assets/img/planeta_zemlia_kosmos_167499_2560x1600 1.png';
 
-
-export default function Home() {
+export default function Basket() {
+  
   return (
     <div className='relative flex mt-[15px]'>
       <div className='sm:w-[377px] lg:w-[400px] w-[46px]'>
@@ -18,8 +16,9 @@ export default function Home() {
           priority
         />
       </div>
-      <Container/>
-      <Cart />
+      <div className='lg:ml-32 sm:ml-14 ml-6 max-w-[279px] sm:max-w-[402px]'>
+        <h2 className='text-2xlc font-bold'>Заказ отправлен!</h2>
+      </div>
     </div>
   )
 }
