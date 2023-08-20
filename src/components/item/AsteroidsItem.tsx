@@ -1,19 +1,21 @@
 import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import IAsteroid from '@/types/IAsteroid';
 import { formatDate, formatName, formatNumber, plural } from '../../utils';
 import {AsteroidsContext } from '../../context';
 import Image from 'next/image';
 import Img from '../../assets/img/big-item.png';
 
-
 interface ItemProps {
-  item: IAsteroid
+  item: IAsteroid;
+  isLast: boolean;
+  newLimit: () => void;
 }
       
-export default function AsteroidsItem({item}: ItemProps) {
+export default function AsteroidsItem({item, isLast, newLimit}: ItemProps) {
   const {  isDistanceInKm, setAsteroid, addToBasket } = useContext(AsteroidsContext);
   const [isBasketShow, setIsBasketShow] = useState(false);
+  const itemRef: any = useRef();
 
   const title = formatDate(item.close_approach_data[0].epoch_date_close_approach);
   const diameter =  Math.round(item.estimated_diameter.meters.estimated_diameter_max);
@@ -22,14 +24,26 @@ export default function AsteroidsItem({item}: ItemProps) {
   const handleClick = () => {
     setAsteroid(item);
   }
-
   const orderAsteroid = () => {
     setIsBasketShow(true)
     addToBasket(item);
   }
 
+  useEffect(() => {
+    if (!itemRef?.current) return;
+  
+    const observer = new IntersectionObserver(([entry]) => {
+      if (isLast && entry.isIntersecting) {
+        newLimit();
+        observer.unobserve(entry.target);
+      }
+    });
+  
+    observer.observe(itemRef.current);
+  }, [isLast]);
+
   return (
-    <div className='mt-6'>
+    <div className='mt-6' ref={itemRef}>
       <h3 className='text-2xl font-bold'>{title}</h3>
       <div className='flex flex-wrap items-center mt-2'>
         <div className='pr-2'>

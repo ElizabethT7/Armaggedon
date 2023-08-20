@@ -3,7 +3,6 @@ import Img from '../../assets/img/planeta_zemlia_kosmos_167499_2560x1600 1.png';
 import BasketList from '../../components/list/BasketList';
 
 export default function Basket() {
-  
   return (
     <div className='relative flex mt-[15px]'>
       <div className='sm:w-[377px] lg:w-[400px] w-[46px]'>

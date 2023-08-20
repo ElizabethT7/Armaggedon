@@ -5,6 +5,18 @@ export const getDate = () => {
   return date.getFullYear() + '-' + month + '-' +  day;
 }
 
+const generateCode = (function (start = 0) {
+  return () => ++start;
+}());
+
+export const getNextDate = () => {
+  const date = new Date();
+  const month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
+  const day = date.getDate() < 10 ? '0' + date.getDate() + generateCode() : date.getDate() + generateCode();   
+  let nextDate = date.getFullYear() + '-' + month + '-' + day;
+  return nextDate;
+}
+
 export const formatDate = (date: Date) => {
   const formatDate = new Intl.DateTimeFormat("ru", {dateStyle: "medium"}).format(date);
   return formatDate.replace('.', '').slice(0, -3);

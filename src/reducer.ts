@@ -9,6 +9,17 @@ export function reducer(state: any,{type, payload}: any) {
         }, [] as (typeof payload[keyof typeof payload])[])[0] || [],
         loading: false,
       }
+    case 'SET_NEW_ASTEROIDS': {
+      let newItems = (Object.keys(payload) as Array<keyof typeof payload>).reduce((accumulator, current) => {
+          accumulator.push(payload[current]);
+          return accumulator;
+        }, [] as (typeof payload[keyof typeof payload])[])[0];
+      return {
+        ...state,
+        items: state.items.concat(newItems),
+        loading: false,
+      }
+    }   
     case 'SET_ORDER': 
       return {
         ...state,

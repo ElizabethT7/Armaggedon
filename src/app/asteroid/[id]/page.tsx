@@ -12,7 +12,6 @@ interface AsteroidProps {
 }
 
 export default function Asteroid({params: {id}}: AsteroidProps) {
-  
   const { asteroid, setAsteroid } = useContext(AsteroidsContext);
 
   useEffect(function getAsteroid() {

@@ -41,6 +41,9 @@ export const ContextProvider = ({ children }: any) => {
   value.setItems = (data: any) => {
     dispatch({type: 'SET_ASTEROIDS', payload: data})
   }
+  value.setNewItems = (data: any) => {
+    dispatch({type: 'SET_NEW_ASTEROIDS', payload: data})
+  }
   value.setOrder = (data: IAsteroid[]) => {
     dispatch({type: 'SET_ASTEROIDS', payload: data})
   }

@@ -13,14 +13,14 @@ interface ItemProps {
       
 export default function BasketItem({item}: ItemProps) {
   const { isDistanceInKm, setAsteroid } = useContext(AsteroidsContext);
+  
+  const title = formatDate(item.close_approach_data[0].epoch_date_close_approach);
+  const diameter =  Math.round(item.estimated_diameter.meters.estimated_diameter_max);
+  const distanceLunar = formatNumber(+item.close_approach_data[0].miss_distance.lunar);
 
   const handleClick = () => {
     setAsteroid(item);
   }
-
-  const title = formatDate(item.close_approach_data[0].epoch_date_close_approach);
-  const diameter =  Math.round(item.estimated_diameter.meters.estimated_diameter_max);
-  const distanceLunar = formatNumber(+item.close_approach_data[0].miss_distance.lunar);
 
   return (
     <div className='mt-6'>
