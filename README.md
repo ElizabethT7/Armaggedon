@@ -1,7 +1,9 @@
 # Armaggedon
-Next.js
 
 Фронтенд приложение на Next.js. Oнлайн-сервис по мониторингу и уничтожению опасных астероидов на основе данных API NASA
+
+Deploy on
+https://armaggedon-omega.vercel.app/
 
 Tech stack
 Next
